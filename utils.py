@@ -29,3 +29,10 @@ def divide(a: int, b: int) -> float:
     Divide
     """
     return a / b
+
+
+def convert(a: int):
+    """
+    Convert: dec->bin
+    """
+    return bin(a)

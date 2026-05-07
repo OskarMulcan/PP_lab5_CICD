@@ -1,5 +1,5 @@
 import pytest
-from utils import add, subtract, multiply, divide
+from utils import add, subtract, multiply, divide, convert
 
 
 @pytest.mark.parametrize("a, b, expected", [(1, 2, 3), (2, 3, 5), (3, 4, 7), (4, 5, 9)])
@@ -24,3 +24,17 @@ def test_multiply(a, b, expected):
 def test_divide(a, b, expected):
     result = divide(a, b)
     assert result == expected
+
+
+@pytest.mark.parametrize(
+    "a, expected", [(10, "0b1010"), (20, "0b10100"), (7, "0b111"), (-2, "-0b10")]
+)
+def test_convert(a, expected):
+    result = convert(a)
+    assert result == expected
+
+
+@pytest.mark.parametrize("a", [(0.1), (-10.3)])
+def test_convert_range(a):
+    with pytest.raises(TypeError):
+        convert(a)
